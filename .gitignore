@@ -1,0 +1,8 @@
+/target
+/Cargo.lock
+
+*.a
+*.o
+*.elf
+*.out
+*.txt
