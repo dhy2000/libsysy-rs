@@ -40,3 +40,23 @@ pub extern "C" fn getch() -> i32 {
 pub extern "C" fn putch(c: i32) {
     io::putch(c);
 }
+
+#[no_mangle]
+pub extern "C" fn getarray(a: *mut i32) -> i32 {
+    io::getarray(a)
+}
+
+#[no_mangle]
+pub extern "C" fn putarray(n: i32, a: *const i32) {
+    io::putarray(n, a)
+}
+
+#[no_mangle]
+pub extern "C" fn getfarray(a: *mut f32) -> i32 {
+    io::getfarray(a)
+}
+
+#[no_mangle]
+pub extern "C" fn putfarray(n: i32, a: *const f32) {
+    io::putfarray(n, a)
+}
