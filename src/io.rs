@@ -76,6 +76,7 @@ pub fn putarray(n: i32, a: *const i32) {
     unsafe {
         data = std::slice::from_raw_parts(a, n).to_vec();
     }
+    put(format!("{}: ", n));
     put(data
         .into_iter()
         .map(|x| x.to_string())
