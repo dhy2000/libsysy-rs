@@ -1,8 +1,10 @@
 /target
 /Cargo.lock
+/.vscode
 
 *.a
 *.o
 *.elf
+*.in
 *.out
 *.txt
