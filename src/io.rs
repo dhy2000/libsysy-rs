@@ -46,9 +46,20 @@ fn put<T>(o: T)
 where
     T: ToString,
 {
-    let s = o.to_string();
+    let s = o.to_string() + "\0";
     unsafe {
         printf("%s\0".as_ptr() as *const i8, s.as_ptr());
+    }
+}
+
+#[allow(dead_code)]
+fn putln<T>(o: T)
+where
+    T: ToString,
+{
+    let s = o.to_string() + "\0";
+    unsafe {
+        printf("%s\n\0".as_ptr() as *const i8, s.as_ptr());
     }
 }
 
@@ -56,7 +67,7 @@ pub fn getarray(a: *mut i32) -> i32 {
     let n = getint();
     let data = (0..n).map(|_| getint()).collect::<Vec<i32>>();
     unsafe {
-        std::ptr::copy(data.as_ptr(), a, std::mem::size_of::<i32>() * (n as usize));
+        std::ptr::copy(data.as_ptr(), a, n as usize);
     }
     n
 }
@@ -65,7 +76,7 @@ pub fn getfarray(a: *mut f32) -> i32 {
     let n = getint();
     let data = (0..n).map(|_| getfloat()).collect::<Vec<f32>>();
     unsafe {
-        std::ptr::copy(data.as_ptr(), a, std::mem::size_of::<f32>() * (n as usize));
+        std::ptr::copy(data.as_ptr(), a, n as usize);
     }
     n
 }
@@ -77,7 +88,7 @@ pub fn putarray(n: i32, a: *const i32) {
         data = std::slice::from_raw_parts(a, n).to_vec();
     }
     put(format!("{}: ", n));
-    put(data
+    putln(data
         .into_iter()
         .map(|x| x.to_string())
         .reduce(|acc, t| acc + " " + &t)
@@ -95,4 +106,5 @@ pub fn putfarray(n: i32, a: *const f32) {
         putch(32);
         putfloat(data);
     }
+    putch(10);
 }
