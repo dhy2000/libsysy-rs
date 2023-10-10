@@ -4,11 +4,11 @@ int main() {
     // Int IO
     int a = getint(), b = getint();
     putint(a); putch(32); putint(b); putch(10);
-    putint(a + b);
+    putint(a + b); putch(10);
     // Float IO
     float f1 = getfloat(), f2 = getfloat();
     putfloat(f1); putch(32); putfloat(f2); putch(10);
-    putfloat(f1 + f2);
+    putfloat(f1 + f2); putch(10);
     // Int Array IO
     int arr[16] = {};
     int narr = getarray(arr);
