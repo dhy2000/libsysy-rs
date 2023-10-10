@@ -3,15 +3,15 @@
 
 int getint();
 int getch();
-// int getarray(int a[]);
+int getarray(int a[]);
 float getfloat();
-// int getfarray(float a[]);
+int getfarray(float a[]);
 
 void putint(int a);
 void putch(int a);
-// void putarray(int n,int a[]);
+void putarray(int n,int a[]);
 void putfloat(float a);
-// void putfarray(int n, float a[]);
+void putfarray(int n, float a[]);
 
 // void putf(char a[], ...);
 
