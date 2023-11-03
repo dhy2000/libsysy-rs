@@ -4,14 +4,14 @@ use std::io::{self, Write};
 pub fn getint() -> i32 {
     let mut n: i32 = 0;
     unsafe {
-        scanf("%d\0".as_ptr() as *const i8, &mut n as *mut libc::c_int);
+        scanf("%d\0".as_ptr() as *const libc::c_char, &mut n as *mut libc::c_int);
     }
     n
 }
 
 pub fn putint(n: i32) {
     unsafe {
-        printf("%d\0".as_ptr() as *const i8, n);
+        printf("%d\0".as_ptr() as *const libc::c_char, n);
     }
     io::stdout().flush().unwrap();
 }
@@ -19,14 +19,14 @@ pub fn putint(n: i32) {
 pub fn getfloat() -> f32 {
     let mut f: f32 = 0.0;
     unsafe {
-        scanf("%f\0".as_ptr() as *const i8, &mut f as *mut libc::c_float);
+        scanf("%f\0".as_ptr() as *const libc::c_char, &mut f as *mut libc::c_float);
     }
     f
 }
 
 pub fn putfloat(f: f32) {
     unsafe {
-        printf("%a\0".as_ptr() as *const i8, f as libc::c_double);
+        printf("%a\0".as_ptr() as *const libc::c_char, f as libc::c_double);
     }
     io::stdout().flush().unwrap();
 }
@@ -48,7 +48,7 @@ where
 {
     let s = o.to_string() + "\0";
     unsafe {
-        printf("%s\0".as_ptr() as *const i8, s.as_ptr());
+        printf("%s\0".as_ptr() as *const libc::c_char, s.as_ptr());
     }
 }
 
@@ -59,7 +59,7 @@ where
 {
     let s = o.to_string() + "\0";
     unsafe {
-        printf("%s\n\0".as_ptr() as *const i8, s.as_ptr());
+        printf("%s\n\0".as_ptr() as *const libc::c_char, s.as_ptr());
     }
 }
 
